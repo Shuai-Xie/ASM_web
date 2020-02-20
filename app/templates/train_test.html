@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    <div class="container padt">
+        <div class="container-fluid col-lg-12">
+            <!--name/btns-->
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2>Train a model
+                        {% if choose_dataset %}
+                            on <span style="color: red">{{ choose_dataset }}</span>
+                        {% endif %}
+                    </h2>
+                </div>
+                <div class="col-lg-4" style="margin-top: 22px">
+                    <div class="btn-group btn-group-justified" role="group">
+                        <div class="btn-group" role="group" style="padding-left: 5px">
+                            <a type="button" class="btn btn-primary" onclick="start_train('{{ choose_dataset }}')">Train</a>
+                        </div>
+                        <div class="btn-group" role="group" style="padding-left: 5px"><!--todo: tensorboard ip-->
+                            <a type="button" class="btn btn-warning" onclick="">Visualize</a>
+                        </div>
+                        <div class="btn-group" role="group" style="padding-left: 5px">
+                            <a type="button" class="btn btn-danger" onclick="">Stop</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--model choices-->
+            <div class="row" style="margin-top: 10px">
+                <div class="col-lg-12">
+                    <div class="col-lg-4">
+                        <label for="model_picker" style="font-weight: normal">models : </label>
+                        <select id="model_picker" class="selectpicker" data-style="btn-default">
+                            {% for model in model_tricks.keys() %}
+                                <option>{{ model }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="trick_picker" style="font-weight: normal">tricks : </label>
+                        <select id="trick_picker" class="selectpicker" multiple data-actions-box="true">
+                            {% for trick in model_tricks[model_tricks.keys() | first] %}
+                                <option>{{ trick }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="eval_picker" style="font-weight: normal">eval : </label>
+                        <select id="eval_picker" class="selectpicker" multiple data-actions-box="true">
+                            {% for eval in eval_list %}
+                                <option>{{ eval }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // jinja2 should be here!
+        let model_tricks = {};
+        {% for key in model_tricks.keys() %} // dict
+            model_tricks['{{ key }}'] = [];
+            {% for trick in model_tricks[key] %} // list
+                model_tricks['{{ key }}'].push('{{ trick }}');
+            {% endfor %}
+        {% endfor %}
+    </script>
+    <script src="../static/js/train.js"></script>
+
+{% endblock %}

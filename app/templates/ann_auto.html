@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    <div class="container padt">
+        <div class="container-fluid col-lg-12">
+            <!--name/btns-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Active Sample Mining
+                        {% if choose_dataset %}
+                            on <span style="color: red">{{ choose_dataset }}</span>
+                        {% endif %}
+                    </h2>
+                </div>
+                <div class="col-lg-4" style="margin-top: 20px;">
+                    <label for="asm_model_picker" style="font-weight: normal">models : </label>
+                    <select id="asm_model_picker" class="selectpicker" data-style="btn-default">
+                        {% for model in asm_model_list %}
+                            <option>{{ model }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-lg-2" style="margin-top: 20px;">
+                    <div class="btn-group btn-group-justified" role="group">
+                        <div class="btn-group" role="group" style="padding-left: 5px">
+                            <a type="button" class="btn btn-warning" onclick="auto_label('{{ choose_dataset }}')">
+                                ASM
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group" style="padding-left: 5px">
+                            <a type="button" class="btn btn-danger" onclick="clear_auto('{{ choose_dataset }}')">
+                                Clear
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--progress bar-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5>Progressing: <span id="cur_idx">0</span> / <span id="total_num">0</span></h5>
+                    <!--进度示数-->
+                    <div id="sa">
+                        <span style="color: #5cb85c">SL</span>
+                        <span id="sl_num">0</span> : <span id="al_num">0</span>
+                        <span style="color: #d9534f">AL</span>
+                    </div>
+                    <div class="progress">
+                        <div id="progress_bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+                             aria-valuemin="0" aria-valuemax="100" style="width: 0">
+                            <span id="progress_val">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--asm img results-->
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <h4>machine labeled</h4>
+                    <img id="sl_img" src="../static/imgs/machine.png" style="width: 200px" alt="machine">
+                </div>
+                <div class="col-lg-6 text-center">
+                    <h4>human labeled</h4>
+                    <img id="al_img" src="../static/imgs/human.png" style="width: 200px" alt="human">
+                </div>
+            </div>
+
+            <hr>
+
+            <!--annotate with Dataturks-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Annotate with Dataturks
+                        {% if choose_dataset %}
+                            on <span style="color: red">{{ choose_dataset }}</span>
+                        {% endif %}
+                    </h2>
+                    <h5 style="margin-top: 20px">You can start by clicking
+                        <a href="http://10.214.211.205/projects/login" target="_blank">Dataturks</a>.
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/asm.js"></script>
+
+{% endblock %}

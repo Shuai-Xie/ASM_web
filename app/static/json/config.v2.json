@@ -1,0 +1,166 @@
+{
+  "StreamConfig": {},
+  "State": {
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "RemovalInProgress": false,
+    "Dead": false,
+    "Pid": 46675,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2019-11-23T07:34:15.466888293Z",
+    "FinishedAt": "2019-11-23T07:32:22.808326897Z",
+    "Health": null
+  },
+  "ID": "8ff367b3e9bb0e3038213a51f73392f4ab77c2aca7b9d59726a62463fb0ddbdf",
+  "Created": "2019-09-18T08:07:46.814376376Z",
+  "Managed": false,
+  "Path": "/bin/sh",
+  "Args": [
+    "-c",
+    "./startup.sh \u003e ./startup_log.log"
+  ],
+  "Config": {
+    "Hostname": "8ff367b3e9bb",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "3000/tcp": {},
+      "3001/tcp": {},
+      "80/tcp": {},
+      "9090/tcp": {},
+      "3306/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LANG=C.UTF-8",
+      "JAVA_HOME=/docker-java-home",
+      "JAVA_VERSION=8u181",
+      "JAVA_DEBIAN_VERSION=8u181-b13-1~deb9u1",
+      "CA_CERTIFICATES_JAVA_VERSION=20170531+nmu1",
+      "DEBIAN_FRONTEND=noninteractive",
+      "BASE_DIR=/home/dataturks",
+      "BAZAR_PARENT_DIR=/home/dataturks",
+      "LOCAL_DOCKER_DIR=./hope/docker",
+      "LOCAL_BAZAAR_DIR=./bazaar",
+      "LOCAL_HOPE_DIR=./hope/"
+    ],
+    "Cmd": [
+      "/bin/sh",
+      "-c",
+      "./startup.sh \u003e ./startup_log.log"
+    ],
+    "ArgsEscaped": true,
+    "Image": "dataturks/dataturks:3.3.0",
+    "Volumes": null,
+    "WorkingDir": "/home/dataturks",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": {}
+  },
+  "Image": "sha256:19b3be5dd1f2e234bbb05ee576937fb07b505c11fb5833c114478d10d1566866",
+  "NetworkSettings": {
+    "Bridge": "",
+    "SandboxID": "ecef9f5a47379a193cd9bfcc3feb017619315a387a27b7576db7b996a543fa7e",
+    "HairpinMode": false,
+    "LinkLocalIPv6Address": "",
+    "LinkLocalIPv6PrefixLen": 0,
+    "Networks": {
+      "bridge": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "NetworkID": "ff50667965275bd593f34737105e2cfaca525e466687805d626ca93968a5edac",
+        "EndpointID": "27e24d84fa29b8c37a8490f79434df666597f10e5d67e47a54e5006cefca521c",
+        "Gateway": "172.17.0.1",
+        "IPAddress": "172.17.0.2",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "MacAddress": "02:42:ac:11:00:02",
+        "DriverOpts": null,
+        "IPAMOperational": false
+      }
+    },
+    "Service": null,
+    "Ports": {
+      "3000/tcp": null,
+      "3001/tcp": null,
+      "80/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "80"
+        }
+      ],
+      "3306/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "3316"
+        }
+      ],
+      "9090/tcp": null
+    },
+    "SandboxKey": "/var/run/docker/netns/ecef9f5a4737",
+    "SecondaryIPAddresses": null,
+    "SecondaryIPv6Addresses": null,
+    "IsAnonymousEndpoint": true,
+    "HasSwarmEndpoint": false
+  },
+  "LogPath": "/var/lib/docker/containers/8ff367b3e9bb0e3038213a51f73392f4ab77c2aca7b9d59726a62463fb0ddbdf/8ff367b3e9bb0e3038213a51f73392f4ab77c2aca7b9d59726a62463fb0ddbdf-json.log",
+  "Name": "/frosty_ritchie",
+  "Driver": "overlay2",
+  "OS": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "RestartCount": 0,
+  "HasBeenStartedBefore": true,
+  "HasBeenManuallyStopped": false,
+  "MountPoints": {
+    "/home/dataturks/bazaar/maploads": {
+      "Source": "/nfs/xs/retail/maploads",
+      "Destination": "/home/dataturks/bazaar/maploads",
+      "RW": true,
+      "Name": "",
+      "Driver": "",
+      "Type": "bind",
+      "Propagation": "rprivate",
+      "Spec": {
+        "Type": "bind",
+        "Source": "/nfs/xs/retail/maploads",
+        "Target": "/home/dataturks/bazaar/maploads"
+      }
+    },
+    "/home/dataturks/bazaar/uploads": {
+      "Source": "/nfs/xs/retail/uploads",
+      "Destination": "/home/dataturks/bazaar/uploads",
+      "RW": true,
+      "Name": "",
+      "Driver": "",
+      "Type": "bind",
+      "Propagation": "rprivate",
+      "Spec": {
+        "Type": "bind",
+        "Source": "/nfs/xs/retail/uploads",
+        "Target": "/home/dataturks/bazaar/uploads"
+      }
+    }
+  },
+  "SecretReferences": null,
+  "ConfigReferences": null,
+  "AppArmorProfile": "docker-default",
+  "HostnamePath": "/var/lib/docker/containers/8ff367b3e9bb0e3038213a51f73392f4ab77c2aca7b9d59726a62463fb0ddbdf/hostname",
+  "HostsPath": "/var/lib/docker/containers/8ff367b3e9bb0e3038213a51f73392f4ab77c2aca7b9d59726a62463fb0ddbdf/hosts",
+  "ShmPath": "/var/lib/docker/containers/8ff367b3e9bb0e3038213a51f73392f4ab77c2aca7b9d59726a62463fb0ddbdf/mounts/shm",
+  "ResolvConfPath": "/var/lib/docker/containers/8ff367b3e9bb0e3038213a51f73392f4ab77c2aca7b9d59726a62463fb0ddbdf/resolv.conf",
+  "SeccompProfile": "",
+  "NoNewPrivileges": false
+}

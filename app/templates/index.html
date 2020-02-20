@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI + X</title>
+    <link href="../static/imgs/zjuicon.png" rel="icon">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-select.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap-select.js"></script>
+    <script src="../static/js/echarts.js"></script>
+    <script src="../static/js/mychart.js"></script>
+</head>
+<body>
+
+<!--navbar-->
+<div id="header" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="{{ url_for("index") }}">
+                <img src="../static/imgs/vipa.png">
+                <span><b>AI + X</b> Deep Learning Platform</span>
+            </a>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav" style="color: white">
+                <li><a href="{{ url_for("datasets") }}">Datasets</a></li>
+                <li><a href="{{ url_for("ann_auto") }}" target="_blank">Annotate/AutoLabel</a></li>
+                <li><a href="{{ url_for("train_test") }}" target="_blank">Train/Test</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% block body %}
+
+    <div id="body" class="container padt">
+        <div class="container-fluid col-lg-12">
+            <h2>Let's build a model in three steps</h2>
+
+            <div class="list-group" style="padding:10px 20px;">
+                <a href="{{ url_for("datasets") }}" class="list-group-item">
+                    1. Choose a Dataset
+                </a>
+                <a href="{{ url_for("ann_auto") }}" target="_blank" class="list-group-item">
+                    2. Annotate data with Dataturks or Active Sample Mining
+                </a>
+                <a href="{{ url_for("train_test") }}" target="_blank" class="list-group-item">
+                    3. Choose a model
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

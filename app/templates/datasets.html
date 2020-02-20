@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    <div class="container padt">
+        <div class="container-fluid col-lg-12">
+            <h2>Available Datasets</h2>
+            <!--dataset tables-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>You can choose a dataset <b>by clicking idx</b>.</p>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <th style="text-align: center">idx</th>
+                        <th style="text-align: center">name</th>
+                        <th style="text-align: center">classes</th>
+                        <th style="text-align: center">type</th>
+                        <th style="text-align: center">train</th>
+                        <th style="text-align: center">valid</th>
+                        <th style="text-align: center">test</th>
+                        <th style="text-align: center">tags</th>
+                        </thead>
+                        <tbody align="center">
+                        {% if project_list %}
+                            {% for p in project_list %}
+                                <tr>
+                                    <td>
+                                        <a onclick="choose_dataset('/choose/{{ p['idx'] }}')">
+                                            {{ p['idx'] }}
+                                        </a>
+                                    </td>
+                                    <td>{{ p['name'] }}</td>
+                                    <td>{{ p['classes'] }}</td>
+                                    <td>{{ p['taskType'] }}</td>
+                                    <td>{{ p['train'] }}</td>
+                                    <td>{{ p['valid'] }}</td>
+                                    <td>{{ p['test'] }}</td>
+                                    <td>
+                                        <a onclick="show_dataset_detail('/datasets/{{ p['idx'] }}')">
+                                            show details
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--info after one dataset-->
+            <div class="row" style="display: none;" id="choose">
+                <div class="col-lg-12">
+                    <p>
+                        You have chosen <span id="dt" style="color: red;font-weight: bold"></span> dataset. Now you have 2 choices:
+                    </p>
+                    <div class="btn-group btn-group-justified" role="group" style="padding: 0 30px">
+                        <div class="btn-group" role="group" style="padding-right: 10px">
+                            <a type="button" class="btn btn-default" href="{{ url_for('ann_auto') }}" target="_blank">
+                                annotate the data with <span style="color: #5cc1bb; font-weight: bold">Dataturks</span> or <span style="color: #eea236; font-weight: bold">ASM</span>
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group" style="padding-left: 10px">
+                            <a type="button" class="btn btn-default" href="{{ url_for('train_test') }}" target="_blank">
+                                <span style="color: #A020F0; font-weight: bold">Trian a model</span> using already annotated data
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--vis dataset details-->
+            <div class="row" style="margin-top: 10px">
+                <div class="col-lg-12">
+                    <div id="chart" style="width: 100%; height: 1000px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
