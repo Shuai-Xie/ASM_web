@@ -136,7 +136,8 @@ def auto_label():
         if choose_dataset_idx is not None:
             project = project_list[choose_dataset_idx]
         else:
-            project = find_project_by_name(session.get('choose_dataset'), session.get('project_list'))
+            project = find_project_by_name(session.get('choose_dataset'),
+                                           session.get('project_list'))
 
         num_class, class2names = project['classes'], project['cats']
 
@@ -145,6 +146,7 @@ def auto_label():
                           input_size=(480, 640),  # 可存入 ckpt
                           num_classes=num_class + 1,  # +bg
                           self_pretrained=True)
+
         ckpt = os.path.join(model_dir, dataset, model_name, 'model_latest.pth')
         model = load_model(model, ckpt_path=ckpt)
         model = model.to(device)
